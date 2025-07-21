@@ -69,3 +69,12 @@ yarn-error.log*
 
 # Environment files (local configs)
 /.env.*
+
+# Firebase Configuration Files (contains sensitive data)
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+macos/Runner/GoogleService-Info.plist
+web/firebase-config.js
+
+# Firebase generated options (can be regenerated)
+lib/firebase_options.dart
