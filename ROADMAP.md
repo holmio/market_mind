@@ -4,6 +4,7 @@ This document outlines the future plans and features for the Market Mind project
 
 ## 🚀 Upcoming Features
 
+- [ ] Implement Bloc pattern for state management
 - [ ] Push notification integration
 - [ ] AI-based investment analysis
 - [ ] User portfolio management

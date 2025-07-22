@@ -50,6 +50,7 @@ market_mind/
 │   ├── main.dart                # Entry point of the Flutter app
 │   ├── screens/                 # UI screens
 │   ├── models/                  # Data models
+│   ├── blocs/                   # Bloc pattern implementation
 │   ├── services/                # Business logic and API calls
 │   └── widgets/                 # Reusable UI components
 ├── functions/                 # Firebase Functions
