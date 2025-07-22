@@ -78,3 +78,4 @@ web/firebase-config.js
 
 # Firebase generated options (can be regenerated)
 lib/firebase_options.dart
+.env
