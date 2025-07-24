@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:market_mind/auth/auth_bloc.dart';
+import 'package:market_mind/blocs/auth/auth_bloc.dart';
 import 'package:market_mind/screens/auth/login_screen.dart';
 import 'package:market_mind/screens/home.dart';
+import 'package:market_mind/services/firebase_services.dart';
 
 import 'firebase_options.dart';
 
@@ -21,8 +23,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final authBloc = AuthBloc(FirebaseServices.instance);
+
     return BlocProvider(
-      create: (_) => AuthBloc(),
+      create: (_) => authBloc,
       child: MaterialApp(
         title: 'Market Mind',
         theme: ThemeData(
