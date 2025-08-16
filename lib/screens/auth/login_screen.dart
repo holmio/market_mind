@@ -25,7 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
             );
           }
           if (state is AuthAuthenticated) {
-            // Navigate to home or main screen
             Navigator.pushReplacementNamed(context, '/home');
           }
         },

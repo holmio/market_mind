@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:market_mind/services/firebase_services.dart';
 
@@ -28,7 +29,12 @@ class AuthInitial extends AuthState {}
 
 class AuthLoading extends AuthState {}
 
-class AuthAuthenticated extends AuthState {}
+class AuthAuthenticated extends AuthState {
+  final User user;
+  AuthAuthenticated(this.user);
+  @override
+  List<Object?> get props => [user];
+}
 
 class AuthUnauthenticated extends AuthState {}
 
@@ -54,8 +60,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     emit(AuthLoading());
     try {
-      await firebaseServices.signInWithEmail(event.email, event.password);
-      emit(AuthAuthenticated());
+      final result =
+          await firebaseServices.signInWithEmail(event.email, event.password);
+      // Check if result contains a valid email
+      if (result != null && result.user != null) {
+        emit(AuthAuthenticated(result.user!));
+      } else {
+        print(result);
+        emit(AuthError('Login failed: No user returned.'));
+      }
     } catch (e) {
       emit(AuthError(e.toString()));
     }
